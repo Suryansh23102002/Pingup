@@ -16,6 +16,16 @@ await connectDB();
 
 app.use(express.json());
 app.use(cors());
+
+// FIX: Add this middleware to move the token from the query to the header
+// This ensures Clerk can authenticate Server-Sent Event (SSE) requests.
+app.use((req, res, next) => {
+  if (req.query && req.query.token && !req.headers.authorization) {
+    req.headers.authorization = `Bearer ${req.query.token}`;
+  }
+  next();
+});
+
 app.use(clerkMiddleware())
 
 app.get('/',(req,res)=> res.send('Server is running'))
