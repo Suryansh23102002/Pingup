@@ -1,7 +1,3 @@
-Certainly! Here’s a descriptive README for your JavaScript project "Pingup."  
-If you want to add/change anything (like installation steps, usage, features, or a license), let me know and I’ll update it!
-
----
 
 # Pingup
 
